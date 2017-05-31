@@ -1,5 +1,5 @@
 (function(){
-  console.log("navigator");
+  console.dir(navigator);
   let platform = navigator.platform;
   let userAgent = (function(){
     let ua=navigator.userAgent;
@@ -19,11 +19,14 @@
       let i=ua.indexOf(browser);
       i+=browser.length+1;//i+browser的长度+1
       //选取ua中i位置开始的3位，转为浮点数，保存在version中
-      version=parseFloat(ua.slice(i,i+4));
+      version=parseFloat(ua.slice(i,i+3));
       return {"browser":browser,"version":version};
       
   })();
   document.querySelector("#show").innerHTML = `
-  您的浏览器系统是：${platform}；
-  您当前使用的浏览器是：${userAgent.browser}的${userAgent.version}版本；`
+  <P>您的浏览器系统是：${platform}</p>
+  <P>您当前使用的浏览器是：${userAgent.browser}的${userAgent.version}版本</p>
+  <P>浏览器优选语言是：${navigator.language}</p>
+  <P>是否能正常上网：${navigator.onLine}</p>
+  `
 })();
